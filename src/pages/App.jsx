@@ -1,11 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import TodoCounter from "../components/TodoCounter/index"
-import TodoSearch from "../components/TodoSearch/index";
-import TodoList from "../components/TodoList/index";
-import TodoItem from "../components/TodoItem/index";
-import CreateTodoButton from "../components/CreateTodoButton/index";
+import { useState, useEffect } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
+import AppUI from "./AppUI";
 
 // const defaultTodos = [
 //   { text: 'Cortar cebolla', completed: true },
@@ -27,6 +23,10 @@ function App() {
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
 
   const allTodos = todos.length;
+
+  useEffect(() => {
+    console.log('Esta cambiando el contador')
+  }, [completedTodos, allTodos]);
 
   const searchedTodos = todos.filter((todo) => {
     const todoText = todo.text.toLowerCase();
@@ -53,22 +53,15 @@ function App() {
   };
 
   return (
-    <>
-      <TodoCounter completed={completedTodos} total={allTodos}/>
-
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-
-      <TodoList>
-        {searchedTodos.map(todo => (
-          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onComplete={() => completeTodo(todo.text)}  onDelete={() => deleteTodo(todo.text)}/>
-        ))}
-      </TodoList>
-
-      <CreateTodoButton/>
-    </>
+    <AppUI
+      completedTodos={completedTodos}
+      allTodos={allTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+    />
   )
 }
 
