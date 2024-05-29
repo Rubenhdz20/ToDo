@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 function TodoSearch({searchValue, setSearchValue}) {
-    
     return(
         <>  
             <div className="mb-8 flex justify-center">
