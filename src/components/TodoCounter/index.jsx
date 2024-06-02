@@ -1,6 +1,8 @@
-import TodosLoading from "../TodosLoading";
+import { useContext } from "react";
 
-function TodoCounter({ completed, total }) {
+function TodoCounter() {
+    useContext()
+
     return(
         total === completed ? 
         <h1 className="m-0 p-[5rem] text-center text-2xl text-white">Haz sido muy productivo hoy!</h1>

@@ -10,7 +10,8 @@ function TodoProvider({children}) {
         saveItem: saveTodos,
         loading, 
         error,
-      } = useLocalStorage('TODOS_V1', []);
+      } = useLocalStorage('TODOS_V1', []); //The code assumes the useLocalStorage function returns an object containing various properties related to local storage access for a specific key ('TODOS_V1').
+      // Destructuring assignment unpacks these properties into separate variables with more descriptive names (todos, saveTodos, loading, and error) for easier use within your code.
     
       const [searchValue, setSearchValue] = useState('');
     

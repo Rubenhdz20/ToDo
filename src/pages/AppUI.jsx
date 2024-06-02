@@ -23,7 +23,7 @@ function AppUI() {
                     completedTodos,
                     deleteTodo
                }) => {
-                     <TodoList>
+                    <TodoList>
                         {loading && <TodosLoading/>}
     
                         {error && <TodosError/>}
@@ -43,4 +43,4 @@ function AppUI() {
     )
 }
 
-export default AppUI
+export default AppUI;
