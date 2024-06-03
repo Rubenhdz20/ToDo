@@ -1,6 +1,6 @@
-import React from "react";
+import { useState } from 'react';
 import { createContext } from 'react';
-import { useLocalStorage } from './useLocalStorage';
+import  useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 const TodoContext = createContext();
 
@@ -60,4 +60,4 @@ function TodoProvider({children}) {
     )
 }
 
-export default {TodoContext, TodoProvider};
+export  {TodoContext, TodoProvider};
