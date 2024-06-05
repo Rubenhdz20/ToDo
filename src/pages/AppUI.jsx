@@ -7,6 +7,7 @@ import CreateTodoButton from "../components/CreateTodoButton/index";
 import TodosLoading from "../components/TodosLoading/index";
 import TodosError from "../components/TodosError/index";
 import EmptyTodos from "../components/EmptyTodos/index";
+import Modal from "../Modal";
 import {TodoContext} from "../components/TodoContext/index";
  
 function AppUI() {
@@ -16,39 +17,47 @@ function AppUI() {
       searchedTodos,
       completeTodo,
       deleteTodo,
+      openModal,
+      setOpenModal,
     } = React.useContext(TodoContext);
     
     return (
-      <>
-        <TodoCounter />
+    <>
+      <TodoCounter />
 
-        <TodoSearch />
+      <TodoSearch />
   
-        <TodoList>
-          {loading && (
-            <>
-              <TodosLoading />
-            </>
-          )}
+      <TodoList>
+        {loading && (
+          <>
+            <TodosLoading />
+          </>
+        )}
 
-          {error && <TodosError/>}
+        {error && <TodosError/>}
 
-          {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
+        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
   
-          {searchedTodos.map(todo => (
-            <TodoItem
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
-            />
-          ))}
-        </TodoList>
+        {searchedTodos.map(todo => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
         
-        <CreateTodoButton />
-      </>
-    );
-  }
+      <CreateTodoButton />
+
+      {openModal && (
+        <Modal>
+            Funcionalidad de agregar un todo 
+        </Modal>
+      )}
+    </>
+  );
+}
 
 export default AppUI;

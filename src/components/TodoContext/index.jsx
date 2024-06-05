@@ -14,6 +14,8 @@ function TodoProvider({children}) {
       // Destructuring assignment unpacks these properties into separate variables with more descriptive names (todos, saveTodos, loading, and error) for easier use within your code.
     
       const [searchValue, setSearchValue] = useState('');
+
+      const [openModal, setOpenModal] = useState(true);
     
       const completedTodos = todos.filter((todo) => !!todo.completed).length;
     
@@ -53,7 +55,9 @@ function TodoProvider({children}) {
             setSearchValue,
             searchedTodos,
             completeTodo,
-            deleteTodo
+            deleteTodo, 
+            openModal,
+            setOpenModal,
         }}>
             {children}
         </TodoContext.Provider>
