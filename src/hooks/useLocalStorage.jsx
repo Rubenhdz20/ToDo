@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function useLocalStorage(itemName, initialValue) {
-    const [item, setItem] = useState(initialValue); //This state variable holds the actual data retrieved from or stored in local storage. It is initialized with the initialValue using useState.
+    const [item, setItem] = useState(initialValue); // This state variable holds the actual data retrieved from or stored in local storage. It is initialized with the initialValue using useState.
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -13,17 +13,17 @@ function useLocalStorage(itemName, initialValue) {
           let parsedItem;
     
           if (!localStorageItem) {
-            localStorage.setItem(itemName, JSON.stringify(initialValue));
-            parsedItem = initialValue;
+              localStorage.setItem(itemName, JSON.stringify(initialValue));
+              parsedItem = initialValue;
           } else {
-            parsedItem = JSON.parse(localStorageItem);
-            setItem(parsedItem);
+              parsedItem = JSON.parse(localStorageItem);
+              setItem(parsedItem);
           }
     
           setLoading(false);
         } catch(error) {
-          setLoading(false);
-          setError(true);
+            setLoading(false);
+            setError(true);
         }
       }, 2000);
     }, []);

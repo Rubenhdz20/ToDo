@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 
 function Modal({children}) {
     return createPortal(
-        <div>
+        <div className="flex flex-wrap justify-center content-center fixed inset-x-0 inset-y-0 bg-[#000000b9]">
             {children}
         </div>,
         document.getElementById('modal')
