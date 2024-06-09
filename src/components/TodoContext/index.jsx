@@ -15,7 +15,11 @@ function TodoProvider({children}) {
     
       const [searchValue, setSearchValue] = useState('');
 
-      const [openModal, setOpenModal] = useState(true);
+      const [newTodoValue, setNewTodoValue] = useState('');
+
+      const [openModal, setOpenModal] = useState(false);
+
+      const [validStatus, setValidStatus] = useState(false);
     
       const completedTodos = todos.filter((todo) => !!todo.completed).length;
     
@@ -26,6 +30,15 @@ function TodoProvider({children}) {
         const searchText = searchValue.toLowerCase();
         return todoText.includes(searchText);
       });
+
+      const addTodo = (text) => {
+        const newTodos = [...todos];
+        newTodos.push({
+          text,
+          completed: false,
+        });
+        saveTodos(newTodos);
+      };
     
       const completeTodo = (text) => {
         const newTodos = [...todos];
@@ -45,6 +58,18 @@ function TodoProvider({children}) {
         saveTodos(newTodos);
       };
 
+      const validInputData = (text) => {
+        const newTodos = [...todos];
+        const todoIndex = newTodos.findIndex(
+          (todo) => todo.text === text
+        );
+        if(todoIndex !== -1) {
+          setValidStatus(!validStatus);
+          alert('Ya existe esa tarea');
+          setNewTodoValue('');
+        }
+      };
+
     return(
         <TodoContext.Provider value={{
             loading,
@@ -54,10 +79,16 @@ function TodoProvider({children}) {
             searchValue,
             setSearchValue,
             searchedTodos,
+            newTodoValue,
+            setNewTodoValue,
             completeTodo,
             deleteTodo, 
             openModal,
             setOpenModal,
+            addTodo,
+            validStatus,
+            setValidStatus,
+            validInputData,
         }}>
             {children}
         </TodoContext.Provider>
