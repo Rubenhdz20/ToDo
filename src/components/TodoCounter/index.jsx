@@ -10,9 +10,9 @@ function TodoCounter() {
 
     return(
         allTodos === completedTodos ? 
-        <h1 className="m-0 p-[5rem] text-center text-2xl text-white">Haz sido muy productivo hoy!</h1>
+        <h1 className="m-0 p-[3rem] text-center text-lg text-gray-950">Haz sido muy productivo hoy!</h1>
         :
-        <h1 className="m-0 p-[5rem] text-center text-2xl text-white">Has completado {completedTodos} de {allTodos} Todos!</h1>
+        <h1 className="m-0 p-[3rem] text-center text-lg text-gray-950">Has completado {completedTodos} de {allTodos} Todos!</h1>
     )
 }
 
