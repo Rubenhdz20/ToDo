@@ -1,15 +1,13 @@
-import React, { useContext, useState } from "react";
-import { TodoContext } from "../TodoContext";
+import React, { useState } from "react";
 
-function TodoForm() {
-    const {
+function TodoForm({
         newTodoValue,
         setNewTodoValue,
         addTodo,
         setOpenModal,
         validInputData,
         validSatus,
-    } = useContext(TodoContext);
+    }) {
 
     const isDescriptionValid = (newTodoValue.length > 1) ? true : false;
 

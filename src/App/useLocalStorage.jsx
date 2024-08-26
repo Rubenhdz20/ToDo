@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 function useLocalStorage(itemName, initialValue) {
-    const [item, setItem] = useState(initialValue); // This state variable holds the actual data retrieved from or stored in local storage. It is initialized with the initialValue using useState.
+    const [item, setItem] = useState(initialValue); 
+    // This state variable holds the actual data retrieved from or stored in local storage. It is initialized with the initialValue using useState.
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -38,11 +39,11 @@ function useLocalStorage(itemName, initialValue) {
     // It then updates the item state variable with the new data using setItem(newItem).
   
     return {  
-            item, // The current value of the data retrieved from or stored in local storage.
-            saveItem, // The function to update the data in local storage and the component's state.
-            loading, 
-            error,
-          };
+      item, // The current value of the data retrieved from or stored in local storage.
+      saveItem, // The function to update the data in local storage and the component's state.
+      loading, 
+      error,
+    };
 }
 
 export default useLocalStorage;

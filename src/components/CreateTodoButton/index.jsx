@@ -1,12 +1,10 @@
 import React from "react";
-import { TodoContext } from "../TodoContext";
 
-function CreateTodoButton() {
-    const {
-        openModal,
-        setOpenModal,
-    }   = React.useContext(TodoContext);
-
+function CreateTodoButton({
+    openModal,
+    setOpenModal,
+  }) {
+    
     return(
         <>
             <div className="mt-8 flex justify-center self-end">

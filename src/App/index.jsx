@@ -8,25 +8,31 @@ import TodosLoading from "../components/TodosLoading/index";
 import TodosError from "../components/TodosError/index";
 import EmptyTodos from "../components/EmptyTodos/index";
 import Modal from "../Modal";
-import {TodoContext} from "../components/TodoContext/index";
 import TodoForm from "../components/TodoForm/index";
 import TodoHeader from "../components/TodoHeader";
- 
-function AppUI() {
-    const {
-      loading,
-      error,
-      searchedTodos,
-      completeTodo,
-      deleteTodo,
-      openModal,
-      completedTodos,
-      allTodos,
-      searchValue,
-      setSearchValue,
-    } = React.useContext(TodoContext);
-    
-    return (
+import { useTodos } from "./useTodos";
+
+function App() {
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    completedTodos,
+    allTodos,
+    searchValue,
+    setSearchValue,
+    newTodoValue,
+    setNewTodoValue,
+    addTodo,
+    setOpenModal,
+    validInputData,
+    validSatus,
+  } = useTodos();
+
+  return (
     <>
       <TodoHeader>
         <TodoCounter 
@@ -62,15 +68,36 @@ function AppUI() {
         ))}
       </TodoList>
         
-      <CreateTodoButton />
+      <CreateTodoButton 
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+      />
 
       {openModal && (
         <Modal>
-            <TodoForm/>
+            <TodoForm
+              newTodoValue={newTodoValue}
+              setNewTodoValue={setNewTodoValue}
+              addTodo={addTodo}
+              setOpenModal={setOpenModal}
+              validInputData={validInputData}
+              validSatus={validSatus}
+            />
         </Modal>
       )}
     </>
   );
 }
 
-export default AppUI;
+
+export default App;
+
+// function App() {
+//   const [state, setState] = React.setState(initialState);
+
+//   return (
+//     <TodoHeader>
+//       <TodoCounter state={state} setState={setState} />
+//     </TodoHeader>
+//   );
+// }
