@@ -14,10 +14,10 @@ function useLocalStorage(itemName, initialValue) {
           let parsedItem;
     
           if (!localStorageItem) {
-              localStorage.setItem(itemName, JSON.stringify(initialValue));
+              localStorage.setItem(itemName, JSON.stringify(initialValue)); // converts a javascript object to a JSON string
               parsedItem = initialValue;
           } else {
-              parsedItem = JSON.parse(localStorageItem);
+              parsedItem = JSON.parse(localStorageItem); // parses a JSON string into a javascript object 
               setItem(parsedItem);
           }
     
