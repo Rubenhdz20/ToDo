@@ -38,12 +38,10 @@ function App() {
         <TodoCounter 
           allTodos={allTodos}
           completedTodos={completedTodos}
-          // loading={loading}
         />
         <TodoSearch 
           searchValue={searchValue}
           setSearchValue={setSearchValue}
-          // loading={loading}
         />
       </TodoHeader>
 
@@ -94,13 +92,3 @@ function App() {
 
 
 export default App;
-
-// function App() {
-//   const [state, setState] = React.setState(initialState);
-
-//   return (
-//     <TodoHeader>
-//       <TodoCounter state={state} setState={setState} />
-//     </TodoHeader>
-//   );
-// }

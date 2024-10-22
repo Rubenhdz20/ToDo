@@ -34,8 +34,11 @@ function useLocalStorage(itemName, initialValue) {
       setItem(newItem);
     }; 
     // This function allows you to update the data stored in local storage and the component's state. It takes a newItem argument representing the new data you want to save.
+
     // It stringifies the newItem using JSON.stringify for compatibility with local storage, which can only store strings.
+
     // It saves the stringified data in local storage using localStorage.setItem(itemName, JSON.stringify(newItem)).
+    
     // It then updates the item state variable with the new data using setItem(newItem).
   
     return {  
